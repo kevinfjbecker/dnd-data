@@ -7,12 +7,22 @@ const getRandomTable = function(id) {
     // src: https://stackoverflow.com/questions/3895478/
     const range = (size, startAt = 0) => [...Array(size).keys()].map(i => i + startAt);
 
-    const getDiceRoller = (s) => () => {
-        const count = +(s.split('d')[0] || 1);
-        const sides = +s.split('d')[1];
-        return range(count)
-            .map(() => Math.floor(Math.random() * sides + 1))
-            .reduce((a, b) => a + b);
+    const getDiceRoller = (s) => {
+        const a = s.replace(/\s/g, '').split('+');
+        if(a.length > 1) {
+            r = a.map(s => getDiceRoller(s))
+            return () => r.reduce((f, g) => f() + g());
+        }
+        if(!s.includes('d')) {
+            return () => +s;
+        }
+        return () => {
+            const count = +(s.split('d')[0] || 1);
+            const sides = +s.split('d')[1];
+            return range(count)
+                .map(() => Math.floor(Math.random() * sides + 1))
+                .reduce((a, b) => a + b);
+        }
     };
 
     const table = document.querySelector(`[data-content-chunk-id="${id}"]`);
