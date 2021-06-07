@@ -1,4 +1,4 @@
-function LoadScript( scriptURL ) {
+function LoadScript( scriptUrl ) {
 
     // 'scriptURL' is the script's URL, i.e. /js/foo.js
 
@@ -6,7 +6,7 @@ function LoadScript( scriptURL ) {
 
         var link = document.createElement( 'script' );
 
-        link.src = scriptURL;
+        link.src = scriptUrl;
 
         document.head.appendChild( link );
 
