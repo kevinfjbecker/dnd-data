@@ -1,5 +1,5 @@
 // src: https://stackoverflow.com/questions/574944/
-function LoadCSS( cssURL ) {
+function LoadCss( cssUrl ) {
 
     // 'cssURL' is the stylesheet's URL, i.e. /css/styles.css
 
@@ -9,7 +9,7 @@ function LoadCSS( cssURL ) {
 
         link.rel  = 'stylesheet';
 
-        link.href = cssURL;
+        link.href = cssUrl;
 
         document.head.appendChild( link );
 
