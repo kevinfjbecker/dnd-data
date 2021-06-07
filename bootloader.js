@@ -12,3 +12,28 @@
     })
     .catch(() => { console.log('Something went wrong.') });
 })();
+
+function LoadCss( cssUrl ) {
+    return new Promise( function( resolve, reject ) {
+        var link = document.createElement( 'link' );
+        link.rel  = 'stylesheet';
+        link.href = cssUrl;
+        document.head.appendChild( link );
+        link.onload = function() { 
+            resolve(); 
+            console.log( 'CSS has loaded!' ); 
+        };
+    });
+}
+
+function LoadScript( scriptUrl ) {
+    return new Promise( function( resolve, reject ) {
+        var link = document.createElement( 'script' );
+        link.src = scriptUrl;
+        document.head.appendChild( link );
+        link.onload = function() { 
+            resolve(); 
+            console.log( 'Script has loaded!' ); 
+        };
+    });
+}
