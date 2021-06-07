@@ -2,7 +2,7 @@
     Promise.all([
         LoadCss('https://cdn.jsdelivr.net/npm/siiimple-toast/dist/style.css'),
         LoadScript('https://cdn.jsdelivr.net/npm/siiimple-toast/dist/siiimple-toast.min.js'),
-        LoadScript('https://cdn.jsdelivr.net/gh/kevinfjbecker/dnd-data/randomtableparser.js')
+        LoadScript('https://cdn.jsdelivr.net/gh/kevinfjbecker/dnd-data@0.0.2/randomtableparser.js')
     ])
     .then(values => {
         [...document.querySelectorAll('table th:first-child')].filter((th) => th.innerText.match(/[1-9]*d[1-9]+/)).forEach((th) => {
